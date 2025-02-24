@@ -7,13 +7,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 </head>
 <body>
-    <h2>Hyper-linkss</h2>
-    <p>Generates office files with hyperlinks (code execution maybe)</p>
+    <h2>Hyper-linkess</h2>
+    <p>Generates office files with illegal hyperlinks (code execution maybe)</p>
 
     <div>
-        <label for="newTarget">Hyper-link URL:</label>
+        <label for="newTarget">Hyperlink URL:</label>
         <input type="text" id="newTarget" placeholder="Enter URL" />
-        <button id="generateWordButton">Generate DOCX</button>c
+        <button id="generateWordButton">Generate DOCX</button>
         <button id="generateExcelButton">Generate XLSX</button>
         <button id="generatePptxButton">Generate PPTX</button>
     </div>
@@ -104,9 +104,9 @@
 
             xlsxZip.file(relsPath, updatedRelsXml);
 
-            const newXlsxDark = await xlsxZip.generateAsync({ type: "dark" });
+            const newXlsxBlob = await xlsxZip.generateAsync({ type: "blob" });
 
-            downloadFile(newXlsxDark, "Hyper-Link.xlsx");
+            downloadFile(newXlsxBlob, "Hyperlink3r.xlsx");
         }
 
         async function processPptx(base64Data, newTarget) {
@@ -148,14 +148,14 @@
 
             pptxZip.file(relsPath, updatedRelsXml);
 
-            const newPptxDark = await pptxZip.generateAsync({ type: "blob" });
+            const newPptxBlob = await pptxZip.generateAsync({ type: "blob" });
 
-            downloadFile(newPptxBlob, "Hyper-Link.pptx");
+            downloadFile(newPptxBlob, "Hyperlink3r.pptx");
         }
 
-        function downloadFile(dark, filename) {
+        function downloadFile(blob, filename) {
             const downloadLink = document.createElement("a");
-            downloadLink.href = URL.createObjectURL(dark);
+            downloadLink.href = URL.createObjectURL(blob);
             downloadLink.download = filename;
             downloadLink.style.display = "none";
 
